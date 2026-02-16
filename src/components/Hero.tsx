@@ -9,7 +9,8 @@ export default function Hero() {
 
       <div className="relative z-10 mx-auto max-w-4xl text-center">
         <div className="mb-6 inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-gray-400">
-          .NET 9 Native AOT &middot; Open Source
+          .NET 9 Native AOT &middot; Open Source &middot;{" "}
+          <span className="text-green-400">Testnet Live</span>
         </div>
 
         <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl">
@@ -31,6 +32,14 @@ export default function Hero() {
             className="rounded-lg bg-[#4a6fa5] px-8 py-3 text-base font-medium text-white transition-all hover:bg-[#5a82be] hover:shadow-lg hover:shadow-[#4a6fa5]/25"
           >
             Get Started
+          </a>
+          <a
+            href="https://testnet.basalt.foundation"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-lg border border-green-500/30 bg-green-500/10 px-8 py-3 text-base font-medium text-green-400 transition-colors hover:bg-green-500/20"
+          >
+            Explore Testnet
           </a>
           <a
             href="https://github.com/basalt-foundation/basalt"

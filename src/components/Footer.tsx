@@ -11,6 +11,14 @@ export default function Footer() {
             Docs
           </a>
           <a
+            href="https://testnet.basalt.foundation"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-gray-500 transition-colors hover:text-gray-300"
+          >
+            Testnet
+          </a>
+          <a
             href="https://github.com/basalt-foundation"
             target="_blank"
             rel="noopener noreferrer"

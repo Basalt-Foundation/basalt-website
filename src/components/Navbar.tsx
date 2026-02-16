@@ -37,6 +37,14 @@ export default function Navbar() {
             Docs
           </a>
           <a
+            href="https://testnet.basalt.foundation"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-gray-400 transition-colors hover:text-white"
+          >
+            Testnet
+          </a>
+          <a
             href="https://github.com/basalt-foundation"
             target="_blank"
             rel="noopener noreferrer"
@@ -95,6 +103,14 @@ export default function Navbar() {
             className="block py-2 text-sm text-gray-400 transition-colors hover:text-white"
           >
             Docs
+          </a>
+          <a
+            href="https://testnet.basalt.foundation"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block py-2 text-sm text-gray-400 transition-colors hover:text-white"
+          >
+            Testnet
           </a>
           <a
             href="https://github.com/basalt-foundation"
