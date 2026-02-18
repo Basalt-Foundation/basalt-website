@@ -1,28 +1,38 @@
 const layers = [
   {
     name: "Cryptography",
-    items: ["BLAKE3", "Ed25519", "BLS12-381", "Keccak-256"],
+    items: ["BLAKE3", "Ed25519", "BLS12-381", "Keccak-256", "Groth16"],
     color: "#4a6fa5",
   },
   {
     name: "Consensus",
-    items: ["BasaltBFT", "Pipelining", "BLS Aggregation", "View Change"],
-    color: "#527ab6",
+    items: ["BasaltBFT", "Pipelining", "BLS Aggregation", "Slashing", "View Change"],
+    color: "#4f73ad",
   },
   {
     name: "Execution",
-    items: ["BasaltVM", "C# AOT", "WASM", "Gas Metering"],
-    color: "#5a82be",
+    items: ["BasaltVM", "C# AOT", "Sandbox", "Gas Metering", "Compliance Hooks"],
+    color: "#547bb5",
   },
   {
     name: "Storage",
-    items: ["Merkle Patricia Trie", "RocksDB", "State Proofs", "Pruning"],
-    color: "#6b9fd4",
+    items: ["Merkle Patricia Trie", "RocksDB", "Sparse Merkle Tree", "Pruning"],
+    color: "#5a82be",
   },
   {
     name: "Network",
     items: ["TCP Transport", "Kademlia DHT", "Episub Gossip", "Peer Reputation"],
-    color: "#82aedc",
+    color: "#6b9fd4",
+  },
+  {
+    name: "Compliance",
+    items: ["ZkComplianceVerifier", "SchemaRegistry", "IssuerRegistry", "Audit Trail"],
+    color: "#7daedd",
+  },
+  {
+    name: "Confidentiality",
+    items: ["Pedersen Commitments", "Groth16 Proofs", "Private Channels", "Viewing Keys"],
+    color: "#8fbde6",
   },
 ];
 
@@ -35,8 +45,8 @@ export default function Technology() {
             Technology Stack
           </h2>
           <p className="mx-auto max-w-2xl text-gray-400">
-            Five independent layers, each production-hardened and tested across
-            1,380+ unit and integration tests.
+            Seven independent layers, production-hardened and tested across
+            1,737+ unit and integration tests.
           </p>
         </div>
 

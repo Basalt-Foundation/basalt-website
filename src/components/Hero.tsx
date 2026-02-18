@@ -9,21 +9,21 @@ export default function Hero() {
 
       <div className="relative z-10 mx-auto max-w-4xl text-center">
         <div className="mb-6 inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-gray-400">
-          .NET 9 Native AOT &middot; Open Source &middot;{" "}
+          .NET 9 Native AOT &middot; ZK Compliance &middot;{" "}
           <span className="text-green-400">Testnet Live</span>
         </div>
 
         <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl">
-          Enterprise-Grade{" "}
+          Compliance Without{" "}
           <span className="bg-gradient-to-r from-[#4a6fa5] to-[#6b9fd4] bg-clip-text text-transparent">
-            Blockchain
+            Surveillance
           </span>
         </h1>
 
         <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-gray-400 sm:text-xl">
-          A high-performance Layer 1 blockchain built on .NET 9 with Native AOT
-          compilation. C# smart contracts, deterministic BFT finality, and
-          protocol-level regulatory compliance.
+          A Layer 1 blockchain with native zero-knowledge compliance, confidential
+          transactions, and C# smart contracts. Deterministic finality in 800ms.
+          Built on .NET 9 with Native AOT.
         </p>
 
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">

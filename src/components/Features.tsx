@@ -2,22 +2,12 @@ const features = [
   {
     icon: (
       <svg className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-      </svg>
-    ),
-    title: "Native .NET 9 AOT",
-    description:
-      "Single self-contained binary with no JIT overhead. Sub-millisecond startup, predictable latency, and minimal memory footprint.",
-  },
-  {
-    icon: (
-      <svg className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
       </svg>
     ),
     title: "C# Smart Contracts",
     description:
-      "Write contracts in familiar C# with strong typing, Roslyn analyzers, and full debugging support in Visual Studio and Rider.",
+      "Write contracts in familiar C# with StorageMap, StorageValue, and StorageList primitives. 8 Roslyn analyzers catch reentrancy, overflows, and non-determinism at compile time. Full xUnit testing and IDE debugging.",
   },
   {
     icon: (
@@ -25,9 +15,19 @@ const features = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
       </svg>
     ),
-    title: "Enterprise Compliance",
+    title: "ZK Compliance",
     description:
-      "Built-in KYC/AML, MiCA, and GDPR compliance at the protocol level. Identity registry, sanctions screening, and audit trails.",
+      "Hybrid compliance engine: Groth16 ZK proofs verified first, on-chain attestation fallback. SchemaRegistry for credential definitions, IssuerRegistry with 4 trust tiers and collateral staking.",
+  },
+  {
+    icon: (
+      <svg className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
+      </svg>
+    ),
+    title: "Confidential Transactions",
+    description:
+      "Pedersen commitments on BLS12-381 hide amounts while proving balance validity. Groth16 range proofs in 192 bytes. Private X25519 channels with AES-256-GCM encryption.",
   },
   {
     icon: (
@@ -35,9 +35,9 @@ const features = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
-    title: "Fast Finality",
+    title: "800ms Finality",
     description:
-      "BasaltBFT consensus delivers deterministic finality in 800ms with BLS12-381 signature aggregation and pipelined block production.",
+      "BasaltBFT consensus with pipelined 3-phase commit and BLS12-381 signature aggregation. Stake-weighted leader selection. Automatic slashing: 100% for double-signing, 5% for inactivity.",
   },
   {
     icon: (
@@ -47,7 +47,7 @@ const features = [
     ),
     title: "Proven Cryptography",
     description:
-      "BLAKE3 hashing (6x faster than SHA-256), Ed25519 signatures, BLS12-381 aggregation, and EVM-compatible Keccak-256 addresses.",
+      "BLAKE3 hashing at 3-4 GB/s. Ed25519 signatures with batch verification. BLS12-381 for consensus aggregation and ZK proofs. Sparse Merkle Trees for credential revocation.",
   },
   {
     icon: (
@@ -57,7 +57,7 @@ const features = [
     ),
     title: "EVM Bridge",
     description:
-      "Bidirectional bridge to Ethereum and Polygon with multisig relayer, Merkle proof verification, and wrapped BST tokens.",
+      "Bidirectional bridge to Ethereum and Polygon with multisig relayer and Merkle proof verification. EVM-compatible Keccak-256 addresses by design.",
   },
 ];
 
@@ -67,11 +67,11 @@ export default function Features() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-16 text-center">
           <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
-            Built for Enterprise
+            Built Different
           </h2>
           <p className="mx-auto max-w-2xl text-gray-400">
-            Every component designed for production workloads — from
-            compliance-first smart contracts to deterministic consensus.
+            Zero-knowledge compliance, confidential transactions, and C# smart
+            contracts — in a single protocol.
           </p>
         </div>
 

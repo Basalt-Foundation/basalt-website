@@ -1,14 +1,15 @@
 const stats = [
+  { value: "~12,000", label: "TPS" },
+  { value: "800ms", label: "Deterministic Finality" },
   { value: "400ms", label: "Block Time" },
-  { value: "1,440+", label: "Tests Passing" },
-  { value: "1-Block", label: "Deterministic Finality" },
+  { value: "1,737+", label: "Tests Passing" },
   { value: "Live", label: "Testnet", href: "https://testnet.basalt.foundation" },
 ];
 
 export default function Stats() {
   return (
     <section className="border-y border-white/5 bg-[#111111]">
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-6 py-12 sm:grid-cols-4">
+      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-6 py-12 sm:grid-cols-5">
         {stats.map((stat) => (
           <div key={stat.label} className="text-center">
             {stat.href ? (
@@ -19,10 +20,10 @@ export default function Stats() {
                 className="group"
               >
                 <div className="text-3xl font-bold text-green-400 sm:text-4xl">
-                  <span className="inline-block h-2 w-2 rounded-full bg-green-400 mr-2 animate-pulse" />
+                  <span className="mr-2 inline-block h-2 w-2 animate-pulse rounded-full bg-green-400" />
                   {stat.value}
                 </div>
-                <div className="mt-1 text-sm text-gray-500 group-hover:text-gray-300 transition-colors">
+                <div className="mt-1 text-sm text-gray-500 transition-colors group-hover:text-gray-300">
                   {stat.label} &rarr;
                 </div>
               </a>
