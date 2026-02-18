@@ -1,3 +1,5 @@
+import React from "react";
+
 const code = `[BasaltContract]
 public class TokenContract
 {
@@ -36,55 +38,108 @@ public class TokenContract
     }
 }`;
 
-function highlightCSharp(source: string): string {
-  let html = source
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
+type Token = { text: string; color?: string };
 
-  // Attributes [BasaltContract], [Indexed], etc.
-  html = html.replace(
-    /(\[(?:BasaltContract|BasaltConstructor|BasaltEntrypoint|BasaltView|BasaltEvent|Indexed)\])/g,
-    '<span style="color:#dcdcaa">$1</span>'
+const ATTRIBUTES = new Set([
+  "BasaltContract", "BasaltConstructor", "BasaltEntrypoint",
+  "BasaltView", "BasaltEvent", "Indexed",
+]);
+const KEYWORDS = new Set([
+  "public", "private", "readonly", "class", "var", "new", "null",
+  "get", "set", "return",
+]);
+const TYPES = new Set([
+  "void", "ulong", "string", "bool", "byte", "int",
+]);
+const CUSTOM_TYPES = new Set([
+  "StorageMap", "StorageValue", "Context", "TransferEvent", "TokenContract",
+]);
+const METHODS = new Set([
+  "Set", "Get", "Require", "Emit", "BalanceOf", "Transfer", "Initialize",
+]);
+
+function tokenize(source: string): Token[] {
+  const tokens: Token[] = [];
+  let i = 0;
+
+  while (i < source.length) {
+    // String literals
+    if (source[i] === '"') {
+      let j = i + 1;
+      while (j < source.length && source[j] !== '"') j++;
+      j++; // include closing quote
+      tokens.push({ text: source.slice(i, j), color: "#ce9178" });
+      i = j;
+      continue;
+    }
+
+    // Attributes [...]
+    if (source[i] === '[') {
+      let j = i + 1;
+      while (j < source.length && source[j] !== ']') j++;
+      j++; // include ]
+      const inner = source.slice(i + 1, j - 1);
+      if (ATTRIBUTES.has(inner)) {
+        tokens.push({ text: source.slice(i, j), color: "#dcdcaa" });
+        i = j;
+        continue;
+      }
+    }
+
+    // Words (identifiers, keywords, types)
+    if (/[a-zA-Z_]/.test(source[i])) {
+      let j = i;
+      while (j < source.length && /[a-zA-Z0-9_]/.test(source[j])) j++;
+      const word = source.slice(i, j);
+      const nextChar = j < source.length ? source[j] : "";
+
+      if (KEYWORDS.has(word)) {
+        tokens.push({ text: word, color: "#569cd6" });
+      } else if (TYPES.has(word)) {
+        tokens.push({ text: word, color: "#569cd6" });
+      } else if (CUSTOM_TYPES.has(word)) {
+        tokens.push({ text: word, color: "#4ec9b0" });
+      } else if (METHODS.has(word) && nextChar === "(") {
+        tokens.push({ text: word, color: "#dcdcaa" });
+      } else {
+        tokens.push({ text: word });
+      }
+      i = j;
+      continue;
+    }
+
+    // Numbers
+    if (/[0-9]/.test(source[i])) {
+      let j = i;
+      while (j < source.length && /[0-9_]/.test(source[j])) j++;
+      tokens.push({ text: source.slice(i, j), color: "#b5cea8" });
+      i = j;
+      continue;
+    }
+
+    // Everything else (whitespace, operators, punctuation)
+    tokens.push({ text: source[i] });
+    i++;
+  }
+
+  return tokens;
+}
+
+function HighlightedCode({ source }: { source: string }) {
+  const tokens = tokenize(source);
+  return (
+    <>
+      {tokens.map((token, i) =>
+        token.color ? (
+          <span key={i} style={{ color: token.color }}>
+            {token.text}
+          </span>
+        ) : (
+          <React.Fragment key={i}>{token.text}</React.Fragment>
+        )
+      )}
+    </>
   );
-
-  // Keywords
-  html = html.replace(
-    /\b(public|private|readonly|class|var|new|null|get|set)\b/g,
-    '<span style="color:#569cd6">$1</span>'
-  );
-
-  // Types
-  html = html.replace(
-    /\b(void|ulong|string|bool|byte)\b/g,
-    '<span style="color:#569cd6">$1</span>'
-  );
-
-  // Custom types
-  html = html.replace(
-    /\b(StorageMap|StorageValue|Context|TransferEvent|TokenContract)\b/g,
-    '<span style="color:#4ec9b0">$1</span>'
-  );
-
-  // Strings
-  html = html.replace(
-    /(&quot;[^&]*&quot;|"[^"]*")/g,
-    '<span style="color:#ce9178">$1</span>'
-  );
-
-  // Numbers
-  html = html.replace(
-    /\b(\d[\d_]*)\b/g,
-    '<span style="color:#b5cea8">$1</span>'
-  );
-
-  // Method calls
-  html = html.replace(
-    /\b(Set|Get|Require|Emit|BalanceOf|Transfer|Initialize)\b(?=\()/g,
-    '<span style="color:#dcdcaa">$1</span>'
-  );
-
-  return html;
 }
 
 export default function CodePreview() {
@@ -157,10 +212,10 @@ export default function CodePreview() {
                 TokenContract.cs
               </span>
             </div>
-            <pre className="overflow-x-auto p-5 text-[13px] leading-relaxed">
-              <code
-                dangerouslySetInnerHTML={{ __html: highlightCSharp(code) }}
-              />
+            <pre className="overflow-x-auto p-5 text-[13px] leading-relaxed text-gray-300">
+              <code>
+                <HighlightedCode source={code} />
+              </code>
             </pre>
           </div>
         </div>

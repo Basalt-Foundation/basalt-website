@@ -1,3 +1,5 @@
+import React from "react";
+
 const pillars = [
   {
     title: "SchemaRegistry",
@@ -19,35 +21,104 @@ const pillars = [
   },
 ];
 
-const codeSnippet = `// ZK compliance proof attached to transaction
-var tx = new Transaction
-{
-    Type = TransactionType.Transfer,
-    Sender = senderAddr,
-    To = recipientAddr,
-    Value = new UInt256(50_000),
-    ComplianceProofs = new[]
-    {
-        new ComplianceProof
-        {
-            SchemaId = kycSchemaId,
-            Proof = groth16ProofBytes,   // 192 bytes
-            PublicInputs = publicInputs,
-            Nullifier = nullifier,
-        }
-    },
-};`;
+const codeLines: { text: string; color?: string }[][] = [
+  [
+    { text: "// ZK compliance proof attached to transaction", color: "#6a9955" },
+  ],
+  [
+    { text: "var", color: "#569cd6" },
+    { text: " tx = " },
+    { text: "new", color: "#569cd6" },
+    { text: " " },
+    { text: "Transaction", color: "#4ec9b0" },
+  ],
+  [{ text: "{" }],
+  [
+    { text: "    " },
+    { text: "Type", color: "#9cdcfe" },
+    { text: " = " },
+    { text: "TransactionType", color: "#4ec9b0" },
+    { text: ".Transfer," },
+  ],
+  [
+    { text: "    " },
+    { text: "Sender", color: "#9cdcfe" },
+    { text: " = senderAddr," },
+  ],
+  [
+    { text: "    " },
+    { text: "To", color: "#9cdcfe" },
+    { text: " = recipientAddr," },
+  ],
+  [
+    { text: "    " },
+    { text: "Value", color: "#9cdcfe" },
+    { text: " = " },
+    { text: "new", color: "#569cd6" },
+    { text: " " },
+    { text: "UInt256", color: "#4ec9b0" },
+    { text: "(" },
+    { text: "50_000", color: "#b5cea8" },
+    { text: ")," },
+  ],
+  [
+    { text: "    " },
+    { text: "ComplianceProofs", color: "#9cdcfe" },
+    { text: " = " },
+    { text: "new", color: "#569cd6" },
+    { text: "[]" },
+  ],
+  [{ text: "    {" }],
+  [
+    { text: "        " },
+    { text: "new", color: "#569cd6" },
+    { text: " " },
+    { text: "ComplianceProof", color: "#4ec9b0" },
+  ],
+  [{ text: "        {" }],
+  [
+    { text: "            " },
+    { text: "SchemaId", color: "#9cdcfe" },
+    { text: " = kycSchemaId," },
+  ],
+  [
+    { text: "            " },
+    { text: "Proof", color: "#9cdcfe" },
+    { text: " = groth16ProofBytes,   " },
+    { text: "// 192 bytes", color: "#6a9955" },
+  ],
+  [
+    { text: "            " },
+    { text: "PublicInputs", color: "#9cdcfe" },
+    { text: " = publicInputs," },
+  ],
+  [
+    { text: "            " },
+    { text: "Nullifier", color: "#9cdcfe" },
+    { text: " = nullifier," },
+  ],
+  [{ text: "        }" }],
+  [{ text: "    }," }],
+  [{ text: "};" }],
+];
 
-function highlightCode(code: string): string {
-  return code
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/(\/\/[^\n]*)/g, '<span style="color:#6a9955">$1</span>')
-    .replace(/\b(var|new|new\[\])\b/g, '<span style="color:#569cd6">$1</span>')
-    .replace(/\b(Transaction|TransactionType|UInt256|ComplianceProof)\b/g, '<span style="color:#4ec9b0">$1</span>')
-    .replace(/\b(Transfer|Type|Sender|To|Value|ComplianceProofs|SchemaId|Proof|PublicInputs|Nullifier)\b(?=\s*=)/g, '<span style="color:#9cdcfe">$1</span>')
-    .replace(/\b(\d[\d_]*)\b/g, '<span style="color:#b5cea8">$1</span>');
+function ComplianceCode() {
+  return (
+    <>
+      {codeLines.map((line, li) => (
+        <React.Fragment key={li}>
+          {line.map((token, ti) =>
+            token.color ? (
+              <span key={ti} style={{ color: token.color }}>{token.text}</span>
+            ) : (
+              <React.Fragment key={ti}>{token.text}</React.Fragment>
+            )
+          )}
+          {"\n"}
+        </React.Fragment>
+      ))}
+    </>
+  );
 }
 
 export default function Compliance() {
@@ -126,11 +197,10 @@ export default function Compliance() {
                 ComplianceProof.cs
               </span>
             </div>
-            <pre className="overflow-x-auto p-5 text-[13px] leading-relaxed">
-              <code
-                className="text-gray-300"
-                dangerouslySetInnerHTML={{ __html: highlightCode(codeSnippet) }}
-              />
+            <pre className="overflow-x-auto p-5 text-[13px] leading-relaxed text-gray-300">
+              <code>
+                <ComplianceCode />
+              </code>
             </pre>
           </div>
         </div>
