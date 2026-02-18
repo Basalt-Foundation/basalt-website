@@ -1,3 +1,5 @@
+import Reveal from "@/components/Reveal";
+
 const standards = [
   {
     name: "BST-20",
@@ -53,21 +55,23 @@ export default function TokenStandards() {
   return (
     <section id="standards" className="border-t border-white/5 bg-[#111111] px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
-            Token Standards
-          </h2>
-          <p className="mx-auto max-w-2xl text-gray-400">
-            Shipped with reference implementations. Build on proven interfaces
-            or extend them with compliance hooks.
-          </p>
-        </div>
+        <Reveal>
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
+              Token Standards
+            </h2>
+            <p className="mx-auto max-w-2xl text-gray-400">
+              Shipped with reference implementations. Build on proven interfaces
+              or extend them with compliance hooks.
+            </p>
+          </div>
+        </Reveal>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="stagger grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {standards.map((std) => (
+            <Reveal key={std.name}>
             <div
-              key={std.name}
-              className="group rounded-xl border border-white/5 bg-[#0a0a0a] p-5 transition-colors hover:border-[#4a6fa5]/20"
+              className="card-glow group h-full rounded-xl border border-white/5 bg-[#0a0a0a] p-5 transition-colors hover:border-[#4a6fa5]/20"
             >
               <div className="mb-3 flex items-center justify-between">
                 <span
@@ -93,6 +97,7 @@ export default function TokenStandards() {
                 {std.description}
               </p>
             </div>
+            </Reveal>
           ))}
         </div>
       </div>

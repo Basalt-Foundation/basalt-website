@@ -1,4 +1,5 @@
 import React from "react";
+import Reveal from "@/components/Reveal";
 
 const pillars = [
   {
@@ -125,18 +126,21 @@ export default function Compliance() {
   return (
     <section id="compliance" className="border-t border-white/5 px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
-            Zero-Knowledge Compliance
-          </h2>
+        <Reveal>
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
+              Zero-Knowledge Compliance
+            </h2>
           <p className="mx-auto max-w-2xl text-gray-400">
             Transactions carry ephemeral Groth16 ZK proofs. Validators verify
             compliance in constant time. Nothing is stored on-chain. If no proof
             is attached, the engine falls back to on-chain attestation checks.
           </p>
-        </div>
+          </div>
+        </Reveal>
 
         {/* Dual path explanation + code */}
+        <Reveal>
         <div className="mb-16 grid items-start gap-12 lg:grid-cols-2">
           <div>
             <h3 className="mb-4 text-xl font-semibold text-white">
@@ -204,14 +208,13 @@ export default function Compliance() {
             </pre>
           </div>
         </div>
+        </Reveal>
 
         {/* Three pillars */}
-        <div className="grid gap-6 sm:grid-cols-3">
+        <div className="stagger grid gap-6 sm:grid-cols-3">
           {pillars.map((pillar) => (
-            <div
-              key={pillar.title}
-              className="rounded-xl border border-white/5 bg-[#111111] p-6"
-            >
+            <Reveal key={pillar.title}>
+            <div className="card-glow h-full rounded-xl border border-white/5 bg-[#111111] p-6">
               <div className="mb-3 flex items-center justify-between">
                 <h3 className="text-lg font-semibold text-white">
                   {pillar.title}
@@ -224,6 +227,7 @@ export default function Compliance() {
                 {pillar.description}
               </p>
             </div>
+            </Reveal>
           ))}
         </div>
       </div>

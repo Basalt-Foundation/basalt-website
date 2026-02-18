@@ -1,4 +1,5 @@
 import React from "react";
+import Reveal from "@/components/Reveal";
 
 const code = `[BasaltContract]
 public class TokenContract
@@ -146,6 +147,7 @@ export default function CodePreview() {
   return (
     <section id="code" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
+        <Reveal>
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
             <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
@@ -203,7 +205,7 @@ export default function CodePreview() {
             </ul>
           </div>
 
-          <div className="overflow-hidden rounded-xl border border-white/5 bg-[#111111]">
+          <div className="overflow-hidden rounded-xl border border-white/5 bg-[#111111] card-glow">
             <div className="flex items-center gap-2 border-b border-white/5 px-4 py-3">
               <div className="h-3 w-3 rounded-full bg-[#ff5f57]" />
               <div className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
@@ -219,6 +221,7 @@ export default function CodePreview() {
             </pre>
           </div>
         </div>
+        </Reveal>
       </div>
     </section>
   );

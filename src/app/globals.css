@@ -31,3 +31,110 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* ── Scroll-triggered animations ── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children — use with .stagger on parent */
+.stagger > .reveal:nth-child(1) { transition-delay: 0ms; }
+.stagger > .reveal:nth-child(2) { transition-delay: 80ms; }
+.stagger > .reveal:nth-child(3) { transition-delay: 160ms; }
+.stagger > .reveal:nth-child(4) { transition-delay: 240ms; }
+.stagger > .reveal:nth-child(5) { transition-delay: 320ms; }
+.stagger > .reveal:nth-child(6) { transition-delay: 400ms; }
+.stagger > .reveal:nth-child(7) { transition-delay: 480ms; }
+
+/* Slide from left — for tech stack rows */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Hero gradient animation ── */
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.gradient-animate {
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+/* ── Hero background pulse ── */
+
+@keyframes bg-breathe {
+  0%, 100% { opacity: 0.15; transform: translate(-50%, 0) scale(1); }
+  50% { opacity: 0.25; transform: translate(-50%, 0) scale(1.1); }
+}
+
+.bg-breathe {
+  animation: bg-breathe 8s ease-in-out infinite;
+}
+
+@keyframes bg-breathe-alt {
+  0%, 100% { opacity: 0.1; transform: scale(1); }
+  50% { opacity: 0.18; transform: scale(1.15); }
+}
+
+.bg-breathe-alt {
+  animation: bg-breathe-alt 10s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+/* ── Card hover glow ── */
+
+.card-glow {
+  position: relative;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.card-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(74, 111, 165, 0.08);
+}
+
+/* ── Stat number flash on count-up complete ── */
+
+@keyframes stat-flash {
+  0% { color: #fff; }
+  50% { color: #6b9fd4; }
+  100% { color: #fff; }
+}
+
+.stat-done {
+  animation: stat-flash 0.6s ease;
+}
+
+/* ── Comparison table Basalt column shimmer ── */
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ── Timeline connector glow ── */
+
+@keyframes line-grow {
+  from { height: 0; }
+  to { height: 100%; }
+}

@@ -1,3 +1,5 @@
+import Reveal from "@/components/Reveal";
+
 const rows = [
   {
     label: "Type",
@@ -70,16 +72,19 @@ export default function Comparison() {
   return (
     <section className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
-            How Basalt Compares
-          </h2>
-          <p className="mx-auto max-w-2xl text-gray-400">
-            The only blockchain combining native .NET development, protocol-level
-            ZK compliance, and deterministic finality at enterprise scale.
-          </p>
-        </div>
+        <Reveal>
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
+              How Basalt Compares
+            </h2>
+            <p className="mx-auto max-w-2xl text-gray-400">
+              The only blockchain combining native .NET development, protocol-level
+              ZK compliance, and deterministic finality at enterprise scale.
+            </p>
+          </div>
+        </Reveal>
 
+        <Reveal>
         <div className="overflow-x-auto rounded-xl border border-white/5">
           <table className="w-full min-w-[700px] text-sm">
             <thead>
@@ -133,6 +138,7 @@ export default function Comparison() {
             </tbody>
           </table>
         </div>
+        </Reveal>
       </div>
     </section>
   );

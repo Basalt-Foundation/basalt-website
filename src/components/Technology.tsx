@@ -1,3 +1,5 @@
+import Reveal from "@/components/Reveal";
+
 const layers = [
   {
     name: "Cryptography",
@@ -40,41 +42,42 @@ export default function Technology() {
   return (
     <section id="technology" className="border-t border-white/5 bg-[#111111] px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
-            Technology Stack
-          </h2>
-          <p className="mx-auto max-w-2xl text-gray-400">
-            Seven independent layers, production-hardened and tested across
-            1,737+ unit and integration tests.
-          </p>
-        </div>
+        <Reveal>
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
+              Technology Stack
+            </h2>
+            <p className="mx-auto max-w-2xl text-gray-400">
+              Seven independent layers, production-hardened and tested across
+              1,737+ unit and integration tests.
+            </p>
+          </div>
+        </Reveal>
 
         <div className="space-y-3">
-          {layers.map((layer) => (
-            <div
-              key={layer.name}
-              className="group flex flex-col gap-4 rounded-xl border border-white/5 bg-[#0a0a0a] p-5 transition-colors hover:border-[#4a6fa5]/20 sm:flex-row sm:items-center"
-            >
-              <div className="w-36 shrink-0">
-                <span
-                  className="text-sm font-semibold"
-                  style={{ color: layer.color }}
-                >
-                  {layer.name}
-                </span>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {layer.items.map((item) => (
+          {layers.map((layer, i) => (
+            <Reveal key={layer.name} direction="left" className={`delay-[${i * 80}ms]`}>
+              <div className="group flex flex-col gap-4 rounded-xl border border-white/5 bg-[#0a0a0a] p-5 transition-all hover:border-[#4a6fa5]/20 hover:translate-x-1 sm:flex-row sm:items-center">
+                <div className="w-36 shrink-0">
                   <span
-                    key={item}
-                    className="rounded-md border border-white/5 bg-white/5 px-3 py-1 text-sm text-gray-300"
+                    className="text-sm font-semibold"
+                    style={{ color: layer.color }}
                   >
-                    {item}
+                    {layer.name}
                   </span>
-                ))}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {layer.items.map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-md border border-white/5 bg-white/5 px-3 py-1 text-sm text-gray-300 transition-colors group-hover:border-white/10 group-hover:bg-white/[0.08]"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

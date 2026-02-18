@@ -1,3 +1,5 @@
+import Reveal from "@/components/Reveal";
+
 const phases = [
   {
     phase: "Phase 1",
@@ -78,18 +80,21 @@ export default function Roadmap() {
   return (
     <section id="roadmap" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
-            Roadmap
-          </h2>
-          <p className="mx-auto max-w-2xl text-gray-400">
-            From devnet to global infrastructure.
-          </p>
-        </div>
+        <Reveal>
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
+              Roadmap
+            </h2>
+            <p className="mx-auto max-w-2xl text-gray-400">
+              From devnet to global infrastructure.
+            </p>
+          </div>
+        </Reveal>
 
         <div className="space-y-0">
           {phases.map((phase, i) => (
-            <div key={phase.phase} className="relative flex gap-6">
+            <Reveal key={phase.phase}>
+            <div className="relative flex gap-6">
               {/* Timeline line */}
               <div className="flex flex-col items-center">
                 <StatusDot status={phase.status} />
@@ -131,6 +136,7 @@ export default function Roadmap() {
                 </ul>
               </div>
             </div>
+            </Reveal>
           ))}
         </div>
       </div>

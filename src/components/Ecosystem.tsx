@@ -1,3 +1,5 @@
+import Reveal from "@/components/Reveal";
+
 const links = [
   {
     title: "Documentation",
@@ -65,23 +67,25 @@ export default function Ecosystem() {
   return (
     <section id="ecosystem" className="border-t border-white/5 bg-[#111111] px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
-            Ecosystem
-          </h2>
-          <p className="mx-auto max-w-2xl text-gray-400">
-            Everything you need to build on Basalt.
-          </p>
-        </div>
+        <Reveal>
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
+              Ecosystem
+            </h2>
+            <p className="mx-auto max-w-2xl text-gray-400">
+              Everything you need to build on Basalt.
+            </p>
+          </div>
+        </Reveal>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="stagger grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {links.map((link) => (
+            <Reveal key={link.title}>
             <a
-              key={link.title}
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-start gap-4 rounded-xl border border-white/5 bg-[#0a0a0a] p-6 transition-colors hover:border-[#4a6fa5]/30"
+              className="card-glow group flex items-start gap-4 rounded-xl border border-white/5 bg-[#0a0a0a] p-6 transition-colors hover:border-[#4a6fa5]/30"
             >
               <div className="shrink-0 text-[#6b9fd4]">{link.icon}</div>
               <div>
@@ -94,6 +98,7 @@ export default function Ecosystem() {
                 <p className="text-sm text-gray-400">{link.description}</p>
               </div>
             </a>
+            </Reveal>
           ))}
         </div>
       </div>

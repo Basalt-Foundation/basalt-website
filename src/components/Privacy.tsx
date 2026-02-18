@@ -1,3 +1,5 @@
+import Reveal from "@/components/Reveal";
+
 const features = [
   {
     icon: (
@@ -50,23 +52,23 @@ export default function Privacy() {
   return (
     <section id="privacy" className="border-t border-white/5 bg-[#111111] px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
-            Privacy by Design
-          </h2>
-          <p className="mx-auto max-w-2xl text-gray-400">
-            Four composable privacy mechanisms. Use one, combine them, or opt
-            out entirely. No PII ever touches the ledger.
-          </p>
-        </div>
+        <Reveal>
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
+              Privacy by Design
+            </h2>
+            <p className="mx-auto max-w-2xl text-gray-400">
+              Four composable privacy mechanisms. Use one, combine them, or opt
+              out entirely. No PII ever touches the ledger.
+            </p>
+          </div>
+        </Reveal>
 
-        <div className="grid gap-6 sm:grid-cols-2">
+        <div className="stagger grid gap-6 sm:grid-cols-2">
           {features.map((feature) => (
-            <div
-              key={feature.title}
-              className="group rounded-xl border border-white/5 bg-[#0a0a0a] p-6 transition-colors hover:border-[#4a6fa5]/20"
-            >
-              <div className="mb-4 text-[#6b9fd4]">{feature.icon}</div>
+            <Reveal key={feature.title}>
+            <div className="card-glow group h-full rounded-xl border border-white/5 bg-[#0a0a0a] p-6 transition-colors hover:border-[#4a6fa5]/20">
+              <div className="mb-4 text-[#6b9fd4] transition-transform duration-300 group-hover:scale-110">{feature.icon}</div>
               <h3 className="mb-2 text-lg font-semibold text-white">
                 {feature.title}
               </h3>
@@ -77,6 +79,7 @@ export default function Privacy() {
                 {feature.specs}
               </div>
             </div>
+            </Reveal>
           ))}
         </div>
       </div>

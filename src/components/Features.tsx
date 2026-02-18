@@ -1,3 +1,5 @@
+import Reveal from "@/components/Reveal";
+
 const features = [
   {
     icon: (
@@ -65,30 +67,33 @@ export default function Features() {
   return (
     <section id="features" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
-            Built Different
-          </h2>
-          <p className="mx-auto max-w-2xl text-gray-400">
-            Zero-knowledge compliance, confidential transactions, and C# smart
-            contracts — in a single protocol.
-          </p>
-        </div>
+        <Reveal>
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
+              Built Different
+            </h2>
+            <p className="mx-auto max-w-2xl text-gray-400">
+              Zero-knowledge compliance, confidential transactions, and C# smart
+              contracts — in a single protocol.
+            </p>
+          </div>
+        </Reveal>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="stagger grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (
-            <div
-              key={feature.title}
-              className="group rounded-xl border border-white/5 bg-[#111111] p-6 transition-colors hover:border-[#4a6fa5]/30 hover:bg-[#141820]"
-            >
-              <div className="mb-4 text-[#6b9fd4]">{feature.icon}</div>
-              <h3 className="mb-2 text-lg font-semibold text-white">
-                {feature.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-gray-400">
-                {feature.description}
-              </p>
-            </div>
+            <Reveal key={feature.title}>
+              <div className="card-glow group h-full rounded-xl border border-white/5 bg-[#111111] p-6 transition-colors hover:border-[#4a6fa5]/30 hover:bg-[#141820]">
+                <div className="mb-4 text-[#6b9fd4] transition-transform duration-300 group-hover:scale-110">
+                  {feature.icon}
+                </div>
+                <h3 className="mb-2 text-lg font-semibold text-white">
+                  {feature.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-gray-400">
+                  {feature.description}
+                </p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>
