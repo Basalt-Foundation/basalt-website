@@ -19,7 +19,7 @@ const rows = [
   },
   {
     label: "TPS",
-    basalt: "~12,000",
+    basalt: "~2,000",
     ethereum: "~30",
     solana: "~4,000",
     polygon: "~7,000",
@@ -27,7 +27,7 @@ const rows = [
   },
   {
     label: "Finality",
-    basalt: "800ms",
+    basalt: "4s",
     ethereum: "15 min",
     solana: "13s",
     polygon: "2.3s",

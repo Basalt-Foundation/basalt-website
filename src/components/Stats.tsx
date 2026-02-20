@@ -33,10 +33,10 @@ export default function Stats() {
   return (
     <section className="border-y border-white/5 bg-[#111111]">
       <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-6 py-12 sm:grid-cols-5">
-        <AnimatedStat target={12000} suffix="+" label="TPS" />
-        <AnimatedStat target={800} suffix="ms" label="Deterministic Finality" />
-        <AnimatedStat target={400} suffix="ms" label="Block Time" />
-        <AnimatedStat target={1737} suffix="+" label="Tests Passing" />
+        <AnimatedStat target={2000} suffix="+" label="TPS" />
+        <AnimatedStat target={4} suffix="s" label="Deterministic Finality" />
+        <AnimatedStat target={2} suffix="s" label="Block Time" />
+        <AnimatedStat target={2105} suffix="+" label="Tests Passing" />
 
         <div ref={liveRef} className="text-center">
           <a

@@ -43,7 +43,7 @@ export default function Hero() {
           }`}
         >
           A Layer 1 blockchain with native zero-knowledge compliance, confidential
-          transactions, and C# smart contracts. Deterministic finality in 800ms.
+          transactions, and C# smart contracts. Deterministic finality in 4 seconds.
           Built on .NET 9 with Native AOT.
         </p>
 

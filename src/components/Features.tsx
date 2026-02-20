@@ -37,7 +37,7 @@ const features = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
-    title: "800ms Finality",
+    title: "4s Finality",
     description:
       "BasaltBFT consensus with pipelined 3-phase commit and BLS12-381 signature aggregation. Stake-weighted leader selection. Automatic slashing: 100% for double-signing, 5% for inactivity.",
   },
