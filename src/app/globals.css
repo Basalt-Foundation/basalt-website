@@ -54,6 +54,11 @@ html {
 .stagger > .reveal:nth-child(5) { transition-delay: 320ms; }
 .stagger > .reveal:nth-child(6) { transition-delay: 400ms; }
 .stagger > .reveal:nth-child(7) { transition-delay: 480ms; }
+.stagger > .reveal:nth-child(8) { transition-delay: 560ms; }
+.stagger > .reveal:nth-child(9) { transition-delay: 640ms; }
+.stagger > .reveal:nth-child(10) { transition-delay: 720ms; }
+.stagger > .reveal:nth-child(11) { transition-delay: 800ms; }
+.stagger > .reveal:nth-child(12) { transition-delay: 880ms; }
 
 /* Slide from left — for tech stack rows */
 .reveal-left {

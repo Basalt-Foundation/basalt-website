@@ -36,7 +36,7 @@ export default function Stats() {
         <AnimatedStat target={2000} suffix="+" label="TPS" />
         <AnimatedStat target={4} suffix="s" label="Deterministic Finality" />
         <AnimatedStat target={2} suffix="s" label="Block Time" />
-        <AnimatedStat target={2105} suffix="+" label="Tests Passing" />
+        <AnimatedStat target={2868} suffix="+" label="Tests Passing" />
 
         <div ref={liveRef} className="text-center">
           <a

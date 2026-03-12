@@ -7,6 +7,8 @@ import Privacy from "@/components/Privacy";
 import Comparison from "@/components/Comparison";
 import Technology from "@/components/Technology";
 import CodePreview from "@/components/CodePreview";
+import PolicyHooks from "@/components/PolicyHooks";
+import Dex from "@/components/Dex";
 import TokenStandards from "@/components/TokenStandards";
 import Roadmap from "@/components/Roadmap";
 import Ecosystem from "@/components/Ecosystem";
@@ -24,6 +26,8 @@ export default function Home() {
       <Comparison />
       <Technology />
       <CodePreview />
+      <PolicyHooks />
+      <Dex />
       <TokenStandards />
       <Roadmap />
       <Ecosystem />

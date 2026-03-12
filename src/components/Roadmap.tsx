@@ -6,12 +6,12 @@ const phases = [
     title: "Foundation",
     status: "complete" as const,
     items: [
-      "Core node implementation (P2P, BasaltBFT, storage)",
-      "BasaltVM with C# AOT and sandboxed execution",
-      "Smart Contract SDK with Roslyn analyzers",
-      "ZK compliance engine (SchemaRegistry, IssuerRegistry)",
-      "Confidential transactions (Pedersen, Groth16, private channels)",
-      "4-validator devnet in Docker, 1,737+ tests passing",
+      "Core node (P2P, BasaltBFT, EIP-1559 dynamic fees, flat state DB)",
+      "BasaltVM with C# AOT, sandbox, and 12 Roslyn analyzers",
+      "9 token standards (BST-20/721/1155/3525/4626/VC/DID) with policy hooks",
+      "Caldera Fusion DEX (batch auction, TWAP oracle, concentrated liquidity)",
+      "ZK compliance, confidential transactions, EVM bridge",
+      "Stake-weighted governance, staking/slashing, 2,868+ tests passing",
     ],
   },
   {

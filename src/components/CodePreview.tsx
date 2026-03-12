@@ -2,40 +2,30 @@ import React from "react";
 import Reveal from "@/components/Reveal";
 
 const code = `[BasaltContract]
-public class TokenContract
+public partial class ComplianceToken : BST20Token
 {
-    private readonly StorageMap<byte[], ulong> _balances = new("balances");
-    private readonly StorageValue<ulong> _totalSupply = new("totalSupply");
+    private readonly PolicyEnforcer _policies;
+    private readonly StorageValue<byte[]> _admin = new("admin");
 
     [BasaltConstructor]
-    public void Initialize(string name, ulong initialSupply)
+    public void Initialize(string name, string symbol)
     {
-        _totalSupply.Set(initialSupply);
-        _balances.Set(Context.Caller, initialSupply);
-        Context.Emit(new TransferEvent { From = null, To = Context.Caller, Amount = initialSupply });
+        _admin.Set(Context.Caller);
+        _policies = new PolicyEnforcer("pol", Context);
+        base.Initialize(name, symbol, 18);
     }
 
     [BasaltEntrypoint]
-    public void Transfer(byte[] to, ulong amount)
+    public void AddPolicy(byte[] policyAddress)
     {
-        var sender = Context.Caller;
-        var balance = _balances.Get(sender);
-        Context.Require(balance >= amount, "Insufficient balance");
-
-        _balances.Set(sender, balance - amount);
-        _balances.Set(to, _balances.Get(to) + amount);
-        Context.Emit(new TransferEvent { From = sender, To = to, Amount = amount });
+        Context.Require(Context.Caller == _admin.Get(), "Not admin");
+        _policies.AddPolicy(policyAddress);
     }
 
-    [BasaltView]
-    public ulong BalanceOf(byte[] account) => _balances.Get(account);
-
-    [BasaltEvent]
-    public class TransferEvent
+    protected override void TransferInternal(byte[] from, byte[] to, UInt256 amount)
     {
-        [Indexed] public byte[] From { get; set; }
-        [Indexed] public byte[] To { get; set; }
-        public ulong Amount { get; set; }
+        _policies.EnforceTransfer(from, to, amount);
+        base.TransferInternal(from, to, amount);
     }
 }`;
 
@@ -46,17 +36,19 @@ const ATTRIBUTES = new Set([
   "BasaltView", "BasaltEvent", "Indexed",
 ]);
 const KEYWORDS = new Set([
-  "public", "private", "readonly", "class", "var", "new", "null",
-  "get", "set", "return",
+  "public", "private", "readonly", "class", "partial", "var", "new", "null",
+  "get", "set", "return", "override", "protected", "base",
 ]);
 const TYPES = new Set([
   "void", "ulong", "string", "bool", "byte", "int",
 ]);
 const CUSTOM_TYPES = new Set([
-  "StorageMap", "StorageValue", "Context", "TransferEvent", "TokenContract",
+  "StorageMap", "StorageValue", "Context", "PolicyEnforcer",
+  "BST20Token", "ComplianceToken", "UInt256",
 ]);
 const METHODS = new Set([
-  "Set", "Get", "Require", "Emit", "BalanceOf", "Transfer", "Initialize",
+  "Set", "Get", "Require", "Emit", "AddPolicy", "EnforceTransfer",
+  "Initialize", "TransferInternal",
 ]);
 
 function tokenize(source: string): Token[] {
@@ -154,31 +146,42 @@ export default function CodePreview() {
               Write Contracts in C#
             </h2>
             <p className="mb-6 text-gray-400">
-              No new language to learn. Idiomatic C# with the types, tooling, and
-              IDE support you already know. The SDK ships as a standalone NuGet
+              No new language to learn. Extend built-in token standards with
+              pluggable policy hooks. The SDK ships as a standalone NuGet
               package with zero dependencies on the node.
             </p>
             <ul className="space-y-3 text-sm text-gray-400">
               <li className="flex items-start gap-3">
                 <span className="mt-0.5 text-[#6b9fd4]">&#10003;</span>
                 <span>
-                  Strong typing with{" "}
+                  Pluggable{" "}
                   <code className="rounded bg-white/5 px-1.5 py-0.5 font-mono text-xs text-gray-300">
-                    StorageMap
+                    PolicyEnforcer
                   </code>
-                  ,{" "}
-                  <code className="rounded bg-white/5 px-1.5 py-0.5 font-mono text-xs text-gray-300">
-                    StorageValue
-                  </code>
-                  ,{" "}
-                  <code className="rounded bg-white/5 px-1.5 py-0.5 font-mono text-xs text-gray-300">
-                    StorageList
-                  </code>
+                  {" "}with holding limits, lockups, jurisdiction, and sanctions
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="mt-0.5 text-[#6b9fd4]">&#10003;</span>
-                <span>8 compile-time Roslyn analyzers (BST001&ndash;BST008)</span>
+                <span>12 compile-time Roslyn analyzers (BST001&ndash;BST012)</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="mt-0.5 text-[#6b9fd4]">&#10003;</span>
+                <span>
+                  Inherit from{" "}
+                  <code className="rounded bg-white/5 px-1.5 py-0.5 font-mono text-xs text-gray-300">
+                    BST20Token
+                  </code>
+                  ,{" "}
+                  <code className="rounded bg-white/5 px-1.5 py-0.5 font-mono text-xs text-gray-300">
+                    BST721Token
+                  </code>
+                  ,{" "}
+                  <code className="rounded bg-white/5 px-1.5 py-0.5 font-mono text-xs text-gray-300">
+                    BST3525Token
+                  </code>
+                  {" "}and more
+                </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="mt-0.5 text-[#6b9fd4]">&#10003;</span>
@@ -193,15 +196,6 @@ export default function CodePreview() {
                   debugging
                 </span>
               </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-0.5 text-[#6b9fd4]">&#10003;</span>
-                <span>
-                  Auto-generated binary and JSON codecs via{" "}
-                  <code className="rounded bg-white/5 px-1.5 py-0.5 font-mono text-xs text-gray-300">
-                    [BasaltSerializable]
-                  </code>
-                </span>
-              </li>
             </ul>
           </div>
 
@@ -211,7 +205,7 @@ export default function CodePreview() {
               <div className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
               <div className="h-3 w-3 rounded-full bg-[#28c840]" />
               <span className="ml-3 text-xs text-gray-500">
-                TokenContract.cs
+                ComplianceToken.cs
               </span>
             </div>
             <pre className="overflow-x-auto p-5 text-[13px] leading-relaxed text-gray-300">

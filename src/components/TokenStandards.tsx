@@ -6,7 +6,7 @@ const standards = [
     label: "Fungible Token",
     equiv: "ERC-20",
     description:
-      "Full allowance mechanics, Mint/Burn, compliance hooks. Reference implementation with hex-encoded address keys.",
+      "Full allowance mechanics, Mint/Burn, UInt256 amounts. Pluggable policy hooks enforce holding limits, lockups, jurisdiction, and sanctions at the transfer level.",
     color: "#3fb950",
   },
   {
@@ -14,7 +14,7 @@ const standards = [
     label: "Non-Fungible Token",
     equiv: "ERC-721",
     description:
-      "Auto-incrementing token IDs, per-token approval, metadata URI storage. Mint returns the new token ID.",
+      "Auto-incrementing token IDs, per-token approval, metadata URI storage. NFT-aware policy hooks for transfer restrictions.",
     color: "#6b9fd4",
   },
   {
@@ -22,8 +22,32 @@ const standards = [
     label: "Multi-Token",
     equiv: "ERC-1155",
     description:
-      "Both fungible and non-fungible tokens in a single contract. Batch transfers, operator approvals, Create + Mint.",
+      "Both fungible and non-fungible tokens in a single contract. Batch transfers, operator approvals, policy enforcement on every item.",
     color: "#d29922",
+  },
+  {
+    name: "BST-3525",
+    label: "Semi-Fungible Token",
+    equiv: "ERC-3525",
+    description:
+      "Slot-based semi-fungible tokens for financial instruments. Value transfers between token IDs, slot-level policy hooks, and metadata per slot.",
+    color: "#58a6ff",
+  },
+  {
+    name: "BST-4626",
+    label: "Tokenized Vault",
+    equiv: "ERC-4626",
+    description:
+      "Yield-bearing vault standard. Deposit/withdraw/redeem with share accounting. Inherits BST-20 policy hooks on share transfers.",
+    color: "#3fb950",
+  },
+  {
+    name: "BST-VC",
+    label: "Verifiable Credentials",
+    equiv: "W3C VC + eIDAS 2.0",
+    description:
+      "On-chain W3C Verifiable Credentials with eIDAS 2.0 compliance. Issue, verify, suspend, and revoke credentials. DID-anchored subjects.",
+    color: "#a371f7",
   },
   {
     name: "BST-DID",
@@ -61,8 +85,9 @@ export default function TokenStandards() {
               Token Standards
             </h2>
             <p className="mx-auto max-w-2xl text-gray-400">
-              Shipped with reference implementations. Build on proven interfaces
-              or extend them with compliance hooks.
+              Shipped with reference implementations and pluggable policy hooks.
+              Enforce holding limits, lockups, jurisdiction, and sanctions at the
+              protocol level.
             </p>
           </div>
         </Reveal>

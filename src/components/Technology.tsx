@@ -13,12 +13,12 @@ const layers = [
   },
   {
     name: "Execution",
-    items: ["BasaltVM", "C# AOT", "Sandbox", "Gas Metering", "Compliance Hooks"],
+    items: ["BasaltVM", "C# AOT", "Sandbox", "Gas Metering", "Policy Hooks", "EIP-1559"],
     color: "#547bb5",
   },
   {
     name: "Storage",
-    items: ["Merkle Patricia Trie", "RocksDB", "Sparse Merkle Tree", "Pruning"],
+    items: ["Merkle Patricia Trie", "RocksDB", "Flat State DB", "Sparse Merkle Tree", "Pruning"],
     color: "#5a82be",
   },
   {
@@ -49,7 +49,7 @@ export default function Technology() {
             </h2>
             <p className="mx-auto max-w-2xl text-gray-400">
               Seven independent layers, production-hardened and tested across
-              1,737+ unit and integration tests.
+              2,868+ unit and integration tests.
             </p>
           </div>
         </Reveal>

@@ -9,7 +9,7 @@ const features = [
     ),
     title: "C# Smart Contracts",
     description:
-      "Write contracts in familiar C# with StorageMap, StorageValue, and StorageList primitives. 8 Roslyn analyzers catch reentrancy, overflows, and non-determinism at compile time. Full xUnit testing and IDE debugging.",
+      "Write contracts in familiar C# with StorageMap, StorageValue, and StorageList primitives. 12 Roslyn analyzers catch reentrancy, overflows, policy ordering, and non-determinism at compile time. Full xUnit testing and IDE debugging.",
   },
   {
     icon: (
@@ -60,6 +60,36 @@ const features = [
     title: "EVM Bridge",
     description:
       "Bidirectional bridge to Ethereum and Polygon with multisig relayer and Merkle proof verification. EVM-compatible Keccak-256 addresses by design.",
+  },
+  {
+    icon: (
+      <svg className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
+      </svg>
+    ),
+    title: "Policy Hooks",
+    description:
+      "Pluggable transfer policies on every token standard. Enforce holding limits, lockups, jurisdiction whitelists, and sanctions at the protocol level. 4 reference policies ship out of the box.",
+  },
+  {
+    icon: (
+      <svg className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5-3L16.5 18m0 0L12 13.5m4.5 4.5V4.5" />
+      </svg>
+    ),
+    title: "Protocol-Native DEX",
+    description:
+      "Caldera Fusion: batch auction matching, TWAP oracle, concentrated liquidity, dynamic fees, and encrypted intents with threshold decryption. No external AMM needed.",
+  },
+  {
+    icon: (
+      <svg className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 003 12c0-1.605.42-3.113 1.157-4.418" />
+      </svg>
+    ),
+    title: "On-Chain Governance",
+    description:
+      "Stake-weighted quadratic voting with single-hop delegation and timelock execution. Proposals can execute cross-contract calls on approval. Full DAO without off-chain coordination.",
   },
 ];
 

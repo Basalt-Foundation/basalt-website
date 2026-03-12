@@ -7,6 +7,7 @@ const navLinks = [
   { label: "Compliance", href: "#compliance" },
   { label: "Technology", href: "#technology" },
   { label: "Contracts", href: "#code" },
+  { label: "Standards", href: "#standards" },
   { label: "Roadmap", href: "#roadmap" },
 ];
 
