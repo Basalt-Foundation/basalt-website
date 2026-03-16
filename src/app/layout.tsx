@@ -13,15 +13,37 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Basalt — Enterprise-Grade Blockchain on .NET 9 AOT",
+  title: "Basalt — Compliance-Native Layer 1 Blockchain on .NET 9 AOT",
   description:
-    "A high-performance Layer 1 blockchain built on .NET 9 with Native AOT compilation. C# smart contracts, BFT consensus, built-in compliance, and EVM bridge.",
+    "A Layer 1 blockchain with native zero-knowledge compliance, C# smart contracts, 4-second finality, and a protocol-native DEX. Built on .NET 9 Native AOT.",
+  keywords: [
+    "blockchain",
+    "layer 1",
+    ".NET",
+    "C#",
+    "smart contracts",
+    "zero-knowledge",
+    "compliance",
+    "DEX",
+    "BFT consensus",
+    "AOT",
+    "MiCA",
+    "eIDAS",
+  ],
   openGraph: {
-    title: "Basalt — Enterprise-Grade Blockchain on .NET 9 AOT",
+    title: "Basalt — Compliance-Native Layer 1 Blockchain",
     description:
-      "A high-performance Layer 1 blockchain built on .NET 9 with Native AOT compilation.",
+      "Zero-knowledge compliance, C# smart contracts, 4-second finality, and a protocol-native DEX. Built on .NET 9 Native AOT.",
     type: "website",
-    url: "https://basalt-foundation.github.io/basalt-website",
+    url: "https://basalt.foundation",
+    siteName: "Basalt",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Basalt — Compliance-Native Layer 1 Blockchain",
+    description:
+      "Zero-knowledge compliance, C# smart contracts, 4-second finality, and a protocol-native DEX.",
+    creator: "@basaltEU",
   },
 };
 

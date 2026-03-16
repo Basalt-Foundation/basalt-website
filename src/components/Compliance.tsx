@@ -124,7 +124,7 @@ function ComplianceCode() {
 
 export default function Compliance() {
   return (
-    <section id="compliance" className="border-t border-white/5 px-6 py-24">
+    <section id="compliance" className="bg-[#111111] px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <div className="mb-16 text-center">
@@ -141,7 +141,7 @@ export default function Compliance() {
 
         {/* Dual path explanation + code */}
         <Reveal>
-        <div className="mb-16 grid items-start gap-12 lg:grid-cols-2">
+        <div className="mb-16 grid items-start gap-8 lg:grid-cols-2 lg:gap-12">
           <div>
             <h3 className="mb-4 text-xl font-semibold text-white">
               Dual-Path Verification

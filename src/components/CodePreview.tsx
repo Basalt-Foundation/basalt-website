@@ -140,7 +140,7 @@ export default function CodePreview() {
     <section id="code" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
           <div>
             <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
               Write Contracts in C#

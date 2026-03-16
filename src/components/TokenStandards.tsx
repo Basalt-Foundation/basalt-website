@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Reveal from "@/components/Reveal";
 
 const standards = [
@@ -75,9 +78,17 @@ const standards = [
   },
 ];
 
+const INITIAL_COUNT = 3;
+
 export default function TokenStandards() {
+  const [expanded, setExpanded] = useState(false);
+  const visible = expanded ? standards : standards.slice(0, INITIAL_COUNT);
+
   return (
-    <section id="standards" className="border-t border-white/5 bg-[#111111] px-6 py-24">
+    <section
+      id="standards"
+      className="border-t border-white/5 bg-[#111111] px-6 py-24"
+    >
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <div className="mb-16 text-center">
@@ -93,38 +104,62 @@ export default function TokenStandards() {
         </Reveal>
 
         <div className="stagger grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {standards.map((std) => (
+          {visible.map((std) => (
             <Reveal key={std.name}>
-            <div
-              className="card-glow group h-full rounded-xl border border-white/5 bg-[#0a0a0a] p-5 transition-colors hover:border-[#4a6fa5]/20"
-            >
-              <div className="mb-3 flex items-center justify-between">
-                <span
-                  className="text-lg font-bold"
-                  style={{ color: std.color }}
-                >
-                  {std.name}
-                </span>
-                <span
-                  className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${
-                    std.equiv === "Novel"
-                      ? "border border-[#f85149]/30 bg-[#f85149]/10 text-[#f85149]"
-                      : "border border-white/10 bg-white/5 text-gray-400"
-                  }`}
-                >
-                  {std.equiv}
-                </span>
+              <div className="card-glow group h-full rounded-xl border border-white/5 bg-[#0a0a0a] p-5 transition-colors hover:border-[#4a6fa5]/20">
+                <div className="mb-3 flex items-center justify-between">
+                  <span
+                    className="text-lg font-bold"
+                    style={{ color: std.color }}
+                  >
+                    {std.name}
+                  </span>
+                  <span
+                    className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                      std.equiv === "Novel"
+                        ? "border border-[#f85149]/30 bg-[#f85149]/10 text-[#f85149]"
+                        : "border border-white/10 bg-white/5 text-gray-400"
+                    }`}
+                  >
+                    {std.equiv}
+                  </span>
+                </div>
+                <div className="mb-2 text-sm font-medium text-gray-300">
+                  {std.label}
+                </div>
+                <p className="text-sm leading-relaxed text-gray-500">
+                  {std.description}
+                </p>
               </div>
-              <div className="mb-2 text-sm font-medium text-gray-300">
-                {std.label}
-              </div>
-              <p className="text-sm leading-relaxed text-gray-500">
-                {std.description}
-              </p>
-            </div>
             </Reveal>
           ))}
         </div>
+
+        {!expanded && (
+          <Reveal>
+            <div className="mt-8 text-center">
+              <button
+                onClick={() => setExpanded(true)}
+                className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-6 py-2.5 text-sm font-medium text-gray-400 transition-colors hover:bg-white/10 hover:text-white"
+              >
+                Show all {standards.length} standards
+                <svg
+                  className="h-4 w-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              </button>
+            </div>
+          </Reveal>
+        )}
       </div>
     </section>
   );

@@ -40,7 +40,7 @@ const layers = [
 
 export default function Technology() {
   return (
-    <section id="technology" className="border-t border-white/5 bg-[#111111] px-6 py-24">
+    <section id="technology" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <div className="mb-16 text-center">

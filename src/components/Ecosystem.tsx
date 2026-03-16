@@ -32,6 +32,16 @@ const links = [
     ),
   },
   {
+    title: "Caldera Fusion",
+    description: "Protocol-native DEX with batch auctions and encrypted intents.",
+    href: "https://caldera.basalt.foundation",
+    icon: (
+      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5-3L16.5 18m0 0L12 13.5m4.5 4.5V4.5" />
+      </svg>
+    ),
+  },
+  {
     title: "Block Explorer",
     description: "Live testnet explorer — blocks, transactions, validators.",
     href: "https://testnet.basalt.foundation",
@@ -91,23 +101,23 @@ export default function Ecosystem() {
         <div className="stagger grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {links.map((link) => (
             <Reveal key={link.title}>
-            <a
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="card-glow group flex items-start gap-4 rounded-xl border border-white/5 bg-[#0a0a0a] p-6 transition-colors hover:border-[#4a6fa5]/30"
-            >
-              <div className="shrink-0 text-[#6b9fd4]">{link.icon}</div>
-              <div>
-                <h3 className="mb-1 font-semibold text-white group-hover:text-[#6b9fd4]">
-                  {link.title}
-                  <span className="ml-1 inline-block text-gray-500 transition-transform group-hover:translate-x-1">
-                    &rarr;
-                  </span>
-                </h3>
-                <p className="text-sm text-gray-400">{link.description}</p>
-              </div>
-            </a>
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-glow group flex items-start gap-4 rounded-xl border border-white/5 bg-[#0a0a0a] p-6 transition-colors hover:border-[#4a6fa5]/30"
+              >
+                <div className="shrink-0 text-[#6b9fd4]">{link.icon}</div>
+                <div>
+                  <h3 className="mb-1 font-semibold text-white group-hover:text-[#6b9fd4]">
+                    {link.title}
+                    <span className="ml-1 inline-block text-gray-500 transition-transform group-hover:translate-x-1">
+                      &rarr;
+                    </span>
+                  </h3>
+                  <p className="text-sm text-gray-400">{link.description}</p>
+                </div>
+              </a>
             </Reveal>
           ))}
         </div>

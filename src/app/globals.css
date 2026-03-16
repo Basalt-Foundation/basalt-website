@@ -30,6 +30,40 @@ body {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+/* ── Respect reduced-motion preference ── */
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-left {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .reveal.visible,
+  .reveal-left.visible {
+    transition: none;
+  }
+
+  .gradient-animate {
+    animation: none;
+  }
+
+  .bg-breathe,
+  .bg-breathe-alt {
+    animation: none;
+  }
+
+  .card-glow:hover {
+    transform: none;
+  }
+
+  .stat-done {
+    animation: none;
+  }
 }
 
 /* ── Scroll-triggered animations ── */
@@ -142,4 +176,146 @@ html {
 @keyframes line-grow {
   from { height: 0; }
   to { height: 100%; }
+}
+
+/* ── Whitepaper prose ── */
+
+.wp h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wp h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ededed;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.wp p {
+  color: #a1a1a1;
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+
+.wp strong {
+  color: #ededed;
+  font-weight: 600;
+}
+
+.wp a {
+  color: #6b9fd4;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.wp a:hover {
+  color: #fff;
+}
+
+.wp ul,
+.wp ol {
+  color: #a1a1a1;
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.wp ul { list-style-type: disc; }
+.wp ol { list-style-type: decimal; }
+
+.wp li {
+  margin-bottom: 0.5rem;
+}
+
+.wp table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.wp thead th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  color: #ededed;
+  background: #111111;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+}
+
+.wp tbody td {
+  padding: 0.75rem 1rem;
+  color: #a1a1a1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.wp tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.wp pre {
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: #a1a1a1;
+}
+
+.wp blockquote {
+  border-left: 3px solid #4a6fa5;
+  padding-left: 1rem;
+  margin-bottom: 1.25rem;
+  color: #888888;
+  font-style: italic;
+}
+
+/* ── Caldera accent for cards ── */
+
+.caldera-hover:hover {
+  border-color: hsl(33 95% 50% / 0.3) !important;
+  box-shadow: 0 8px 24px hsl(33 95% 50% / 0.05);
+}
+
+.caldera-hover:hover .caldera-title {
+  color: hsl(33 95% 55%);
+}
+
+/* ── Mobile improvements ── */
+
+@media (max-width: 640px) {
+  /* Code blocks: smaller text on mobile */
+  pre {
+    font-size: 0.75rem !important;
+    padding: 0.75rem !important;
+  }
+
+  /* Tables: tighter padding on mobile */
+  table th,
+  table td {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.8125rem;
+  }
+
+  /* Whitepaper tables */
+  .wp pre {
+    font-size: 0.75rem;
+    padding: 1rem;
+  }
+
+  .wp table th,
+  .wp table td {
+    padding: 0.5rem 0.75rem;
+  }
 }

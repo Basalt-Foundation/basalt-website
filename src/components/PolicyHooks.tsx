@@ -97,7 +97,7 @@ function PolicyCode() {
 
 export default function PolicyHooks() {
   return (
-    <section id="policies" className="border-t border-white/5 px-6 py-24">
+    <section id="policies" className="bg-[#111111] px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <div className="mb-16 text-center">
@@ -113,7 +113,7 @@ export default function PolicyHooks() {
         </Reveal>
 
         <Reveal>
-          <div className="mb-16 grid items-start gap-12 lg:grid-cols-2">
+          <div className="mb-16 grid items-start gap-8 lg:grid-cols-2 lg:gap-12">
             {/* Policy cards */}
             <div className="stagger grid gap-4 sm:grid-cols-2">
               {policies.map((policy) => (

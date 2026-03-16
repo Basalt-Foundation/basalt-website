@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Reveal from "@/components/Reveal";
 
 const rows = [
@@ -86,9 +89,14 @@ const rows = [
   },
 ];
 
+const PREVIEW_COUNT = 5;
+
 export default function Comparison() {
+  const [expanded, setExpanded] = useState(false);
+  const visibleRows = expanded ? rows : rows.slice(0, PREVIEW_COUNT);
+
   return (
-    <section className="px-6 py-24">
+    <section className="bg-[#111111] px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <div className="mb-16 text-center">
@@ -103,59 +111,85 @@ export default function Comparison() {
         </Reveal>
 
         <Reveal>
-        <div className="overflow-x-auto rounded-xl border border-white/5">
-          <table className="w-full min-w-[700px] text-sm">
-            <thead>
-              <tr className="border-b border-white/5 bg-[#111111]">
-                <th className="px-5 py-4 text-left font-medium text-gray-500" />
-                <th className="px-5 py-4 text-left font-semibold text-[#6b9fd4]">
-                  Basalt
-                </th>
-                <th className="px-5 py-4 text-left font-medium text-gray-500">
-                  Ethereum
-                </th>
-                <th className="px-5 py-4 text-left font-medium text-gray-500">
-                  Solana
-                </th>
-                <th className="px-5 py-4 text-left font-medium text-gray-500">
-                  Polygon
-                </th>
-                <th className="px-5 py-4 text-left font-medium text-gray-500">
-                  Hyperledger
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((row, i) => (
-                <tr
-                  key={row.label}
-                  className={`border-b border-white/5 ${
-                    i % 2 === 0 ? "bg-[#0d0d0d]" : "bg-[#111111]"
-                  }`}
-                >
-                  <td className="px-5 py-3.5 font-medium text-gray-400">
-                    {row.label}
-                  </td>
-                  <td
-                    className={`px-5 py-3.5 font-semibold ${
-                      row.highlight
-                        ? "text-green-400"
-                        : "text-white"
+          <div className="overflow-x-auto rounded-xl border border-white/5">
+            <table className="w-full min-w-[700px] text-sm">
+              <thead>
+                <tr className="border-b border-white/5 bg-[#0a0a0a]">
+                  <th className="px-5 py-4 text-left font-medium text-gray-500" />
+                  <th className="px-5 py-4 text-left font-semibold text-[#6b9fd4]">
+                    Basalt
+                  </th>
+                  <th className="px-5 py-4 text-left font-medium text-gray-500">
+                    Ethereum
+                  </th>
+                  <th className="px-5 py-4 text-left font-medium text-gray-500">
+                    Solana
+                  </th>
+                  <th className="px-5 py-4 text-left font-medium text-gray-500">
+                    Polygon
+                  </th>
+                  <th className="px-5 py-4 text-left font-medium text-gray-500">
+                    Hyperledger
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {visibleRows.map((row, i) => (
+                  <tr
+                    key={row.label}
+                    className={`border-b border-white/5 ${
+                      i % 2 === 0 ? "bg-[#0d0d0d]" : "bg-[#111111]"
                     }`}
                   >
-                    {row.basalt}
-                  </td>
-                  <td className="px-5 py-3.5 text-gray-500">{row.ethereum}</td>
-                  <td className="px-5 py-3.5 text-gray-500">{row.solana}</td>
-                  <td className="px-5 py-3.5 text-gray-500">{row.polygon}</td>
-                  <td className="px-5 py-3.5 text-gray-500">
-                    {row.hyperledger}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                    <td className="px-5 py-3.5 font-medium text-gray-400">
+                      {row.label}
+                    </td>
+                    <td
+                      className={`px-5 py-3.5 font-semibold ${
+                        row.highlight ? "text-green-400" : "text-white"
+                      }`}
+                    >
+                      {row.basalt}
+                    </td>
+                    <td className="px-5 py-3.5 text-gray-500">
+                      {row.ethereum}
+                    </td>
+                    <td className="px-5 py-3.5 text-gray-500">{row.solana}</td>
+                    <td className="px-5 py-3.5 text-gray-500">
+                      {row.polygon}
+                    </td>
+                    <td className="px-5 py-3.5 text-gray-500">
+                      {row.hyperledger}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {!expanded && (
+            <div className="mt-4 text-center">
+              <button
+                onClick={() => setExpanded(true)}
+                className="inline-flex items-center gap-2 text-sm text-gray-500 transition-colors hover:text-white"
+              >
+                Show {rows.length - PREVIEW_COUNT} more rows
+                <svg
+                  className="h-3.5 w-3.5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              </button>
+            </div>
+          )}
         </Reveal>
       </div>
     </section>

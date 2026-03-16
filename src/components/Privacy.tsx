@@ -50,7 +50,7 @@ const features = [
 
 export default function Privacy() {
   return (
-    <section id="privacy" className="border-t border-white/5 bg-[#111111] px-6 py-24">
+    <section id="privacy" className="bg-[#111111] px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <div className="mb-16 text-center">

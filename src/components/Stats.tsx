@@ -32,7 +32,7 @@ export default function Stats() {
 
   return (
     <section className="border-y border-white/5 bg-[#111111]">
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-6 py-12 sm:grid-cols-5">
+      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-6 px-6 py-12 sm:grid-cols-5 sm:gap-8">
         <AnimatedStat target={2000} suffix="+" label="TPS" />
         <AnimatedStat target={4} suffix="s" label="Deterministic Finality" />
         <AnimatedStat target={2} suffix="s" label="Block Time" />
