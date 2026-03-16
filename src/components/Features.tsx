@@ -113,7 +113,7 @@ export default function Features() {
           {features.map((feature) => (
             <Reveal key={feature.title}>
               <div className="card-glow group h-full rounded-xl border border-white/5 bg-[#111111] p-6 transition-colors hover:border-[#4a6fa5]/30 hover:bg-[#141820]">
-                <div className="mb-4 text-[#6b9fd4] transition-transform duration-300 group-hover:scale-110">
+                <div className="mb-4 text-[#6b9fd4] ">
                   {feature.icon}
                 </div>
                 <h3 className="mb-2 text-lg font-semibold text-white">
