@@ -49,6 +49,18 @@ const papers = [
       "A hierarchical trust model that replaces centralized administrator-gated identity provider registration with a decentralized accreditation mechanism rooted in real-world regulatory authorities (AMF, BaFin, FCA, FINMA, MAS). Sovereign authorities are onboarded through on-chain governance votes and vouch for accredited providers via BST-VC verifiable credentials.",
   },
   {
+    slug: "enterprise-rwa",
+    title: "Basalt for Enterprise",
+    subtitle:
+      "MiCA-Compliant Real-World Asset Tokenization",
+    date: "March 2026",
+    status: "published" as const,
+    tags: ["MiCA", "RWA", "Compliance", "BST-3525"],
+    accent: basaltAccent,
+    abstract:
+      "MiCA compliance embedded at the protocol level: validator-enforced transfer policies, zero-knowledge identity verification via Groth16 proofs, a Sovereign Trust Chain mapping EU competent authorities onto on-chain trust hierarchies, and structured token standards (BST-3525, BST-4626) for bonds, real estate, carbon credits, and stablecoins.",
+  },
+  {
     slug: "gaming",
     title: "Basalt for Gaming",
     subtitle:
