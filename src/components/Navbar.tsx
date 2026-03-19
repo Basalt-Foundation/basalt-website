@@ -103,6 +103,12 @@ export default function Navbar() {
             </a>
           ))}
           <Link
+            href="/story"
+            className="text-sm text-gray-400 transition-colors hover:text-white"
+          >
+            Story
+          </Link>
+          <Link
             href="/whitepapers"
             className="text-sm text-gray-400 transition-colors hover:text-white"
           >
@@ -180,6 +186,13 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          <Link
+            href="/story"
+            onClick={() => setOpen(false)}
+            className="block py-2 text-sm text-gray-400 transition-colors hover:text-white"
+          >
+            Story
+          </Link>
           <Link
             href="/whitepapers"
             onClick={() => setOpen(false)}
